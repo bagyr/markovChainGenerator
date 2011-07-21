@@ -24,11 +24,12 @@ class LetterChain(abstractChain.AbstractChain):
             if ' ' in key or '\n' in key:
                 continue
             if not key in self._table:
-                self._table[key] = collections.Counter(
-                        self._text[i+self._order])
-            else:
-                self._table[key][
-                        self._text[i+self._order]] += 1
+#                self._table[key] = collections.Counter(
+#                        self._text[i+self._order])
+                self._table[key] = {self._text[i+self._order]: 1}
+            if not self._text[i+self._order] in self._table[key]:
+                self._table[key][self._text[i+self._order]] = 0
+            self._table[key][self._text[i+self._order]] += 1            
 
     def getOrder(self):
         return self._order
