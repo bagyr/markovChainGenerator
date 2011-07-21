@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# vim: set fileencoding=utf-8 :
+
 import abstractChain, re, collections
 
 __author__ = 'belverk'
@@ -13,8 +16,8 @@ class LetterChain(abstractChain.AbstractChain):
         """
         self._order = order
         self.rawText = text
-        self._text = re.sub(r'[^a-zA-Zа-яА-Я ]', '', self.rawText)
-        self._text = re.sub(r' {2,}', ' ', self._text)
+        self._text = re.sub(ur'[^a-zA-Zа-яА-Я ]', '', self.rawText)
+        self._text = re.sub(ur' {2,}', ' ', self._text)
         self._text = self._text.lower()
         for i in range(0, len(self._text) - self._order):
             key = self._text[i:i+self._order]
