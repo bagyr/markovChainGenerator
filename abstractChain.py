@@ -35,4 +35,4 @@ class AbstractChain:
         """
         Serialize table to json.
         """
-        return json.dumps(self._table)
+        return json.dumps(self._table, ensure_ascii = False)

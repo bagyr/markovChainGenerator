@@ -26,10 +26,11 @@ class LetterChain(abstractChain.AbstractChain):
             if not key in self._table:
 #                self._table[key] = collections.Counter(
 #                        self._text[i+self._order])
-                self._table[key] = {self._text[i+self._order]: 1}
+                self._table[key] = {self._text[i+self._order]: 0}
             if not self._text[i+self._order] in self._table[key]:
                 self._table[key][self._text[i+self._order]] = 0
             self._table[key][self._text[i+self._order]] += 1            
+            print self._table
 
     def getOrder(self):
         return self._order
