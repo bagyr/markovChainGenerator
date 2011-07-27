@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # vim: set fileencoding=utf-8 :
 
-import json
+import json, codecs
 
 __author__ = 'belverk'
 
@@ -17,7 +17,11 @@ class AbstractChain:
         """
         Restore JSON-encoded markov chain.
         """
-        self._table = json.loads(jsonEncoded)
+        f = codecs.open(jsonEncoded, mode='r', encoding='utf-8')
+        text = f.read()
+        self._table = json.loads(text, encoding='utf-8')
+        self._order = len(self._table.iterkeys().next())
+        f.close()
 
     def getTable(self):
         """

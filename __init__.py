@@ -1,2 +1,3 @@
 from abstractChain import AbstractChain
 from letterChain import LetterChain
+from markovGenerator import MarkovGenerator

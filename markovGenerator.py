@@ -19,9 +19,11 @@ class MarkovGenerator:
         out = random.choice(list(self._table.keys()))
         while len(out) <= maxLen:
             try:
-                out += random.choice(list(
-                    self._table[out[-self._order:]].elements())) \
-                    + self.separator
+                elements = self._table[out[-self._order:]].keys()
+                out += random.choice(elements)
+#                out += random.choice(list(
+#                    self._table[out[-self._order:]].elements())) \
+#                    + self.separator
                 #print(out[-self._order:])
             except KeyError:
                 return out
@@ -31,8 +33,9 @@ class MarkovGenerator:
         """
         Generate sequence of random texts.
         """
+        out = ''
         for i in range(numWords):
-            print(self.makeText(maxWordLen))
+            out += self.makeText(maxWordLen) + ' '
 
     def fromChain(self, chain):
         self._table = chain.getTable()

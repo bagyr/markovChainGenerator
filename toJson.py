@@ -18,15 +18,16 @@ if __name__ == '__main__':
         text = inFile.read()
         inFile.close()
     else:
-        text = sys.stdin.read().decode('utf-8')
+        text = sys.stdin.read().decode('utf-8', errors = 'ignore')
 
     chain = letterChain.LetterChain()
     chain.fromRawText(text, 4)
     json = chain.toJson()
 
+    print args.o
     if args.o is not None:
-        outFile = codecs.open(args.o, encoding='utf-8', mode='w')
-        outFile.write(json.decode('utf-8'))
+        outFile = codecs.open(args.o, encoding='utf-8', mode='w', errors='ignore')
+        outFile.write(json)
         outFile.close()
-    else:
-        print(json.encode('utf-8'))
+#    else:
+        #print(json.encode('utf-8'))
