@@ -16,15 +16,13 @@ class MarkovGenerator:
         """
         Generates random text according to specified table.
         """
-        out = random.choice(list(self._table.keys()))
+        out = random.choice(self._table.keys()) 
         while len(out) <= maxLen:
             try:
-                elements = self._table[out[-self._order:]].keys()
+                elements = []
+                for i, j in self._table[out[-self._order:]].iteritems():
+                    elements += [i] * j
                 out += random.choice(elements)
-#                out += random.choice(list(
-#                    self._table[out[-self._order:]].elements())) \
-#                    + self.separator
-                #print(out[-self._order:])
             except KeyError:
                 return out
         return out
@@ -36,6 +34,7 @@ class MarkovGenerator:
         out = ''
         for i in range(numWords):
             out += self.makeText(maxWordLen) + ' '
+        return out
 
     def fromChain(self, chain):
         self._table = chain.getTable()
