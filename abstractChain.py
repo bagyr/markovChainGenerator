@@ -5,7 +5,7 @@ import json, codecs
 
 __author__ = 'belverk'
 
-class AbstractChain:
+class AbstractChain(object):
     def __init__(self):
         self._table = {}
         self._order = 0

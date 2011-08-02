@@ -5,7 +5,7 @@ __author__ = 'belverk'
 
 import random
 
-class MarkovGenerator:
+class MarkovGenerator(object):
 
     def __init__(self, chain, separator):
         self._table = chain.getTable()
