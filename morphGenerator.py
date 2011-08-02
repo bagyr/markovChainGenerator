@@ -6,4 +6,4 @@ __author__ = 'belverk'
 class MorphologyGenerator(MarkovGenerator):
     
     def __init__(self, chain, separator):
-
+        super(MarkovGenerator, self).__init__(chain, separator)
